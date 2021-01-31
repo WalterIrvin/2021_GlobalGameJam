@@ -34,7 +34,7 @@ func get_input():
 		velocity.x += speed
 	if Input.is_action_pressed("move_left"):
 		velocity.x -= speed
-	if Input.is_action_pressed("shoot"):
+	if Input.is_action_pressed("fire"):
 		if shoot_timer <= 0:
 			shoot()
 			shoot_timer = shoot_delay

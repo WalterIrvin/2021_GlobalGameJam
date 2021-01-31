@@ -43,6 +43,7 @@
 [ext_resource path="res://Sprites/Top_Down_Survivor/handgun/move/survivor-move_handgun_16.png" type="Texture" id=41]
 [ext_resource path="res://Sprites/Top_Down_Survivor/handgun/move/survivor-move_handgun_17.png" type="Texture" id=42]
 [ext_resource path="res://Sounds/playerdeath.wav" type="AudioStream" id=43]
+[ext_resource path="res://Scenes/HealthBarTest.tscn" type="PackedScene" id=43]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 65.0308
@@ -94,4 +95,11 @@ shape = SubResource( 3 )
 [node name="Death" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 43 )
 volume_db = 10.097
+[node name="HealthBar" parent="." instance=ExtResource( 43 )]
+margin_left = -11.4846
+margin_top = -18.1249
+margin_right = 210.515
+margin_bottom = 208.875
+rect_rotation = 139.3
+rect_scale = Vector2( 0.15, 0.15 )
 [connection signal="area_entered" from="PickupRadius" to="." method="_on_PickupRadius_area_entered"]
