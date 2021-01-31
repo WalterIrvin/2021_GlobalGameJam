@@ -4,7 +4,10 @@ export (PackedScene) var Bullet = load("res://Objects/Bullet.tscn")
 export var speed = 150
 export var shoot_delay = 0.5
 var shoot_timer = shoot_delay
-export var health = 6
+var restart_delay = 4
+var restart_timer = restart_delay
+var restarting = false
+export var health = 4
 export var damage_delay = 1.5
 var damage_timer = damage_delay
 var velocity = Vector2()
@@ -16,7 +19,6 @@ func _ready():
 	shoot_timer = 0
 
 func shoot():
-	anim.play("Shooting")
 	var b = Bullet.instance()
 	get_parent().add_child(b)
 	b.transform = $BulletSpawner.global_transform
@@ -38,7 +40,6 @@ func get_input():
 			shoot_timer = shoot_delay
 			
 func set_animation():
-	print(velocity)
 	if abs(velocity.x) > 0 or abs(velocity.y) > 0:
 		anim.animation = "Moving"
 	else:
@@ -49,15 +50,20 @@ func _physics_process(delta):
 	get_input()
 	set_animation()
 	velocity = move_and_slide(velocity, Vector2.UP)
-	print(anim.animation)
 		
 func _process(delta):
 	shoot_timer -= delta
 	damage_timer -= delta
+	if restarting == true:
+		restart_timer -= delta
 	if health <= 0:
-		get_tree().change_scene("res://Root.tscn")
+		if restarting == false:
+			hide()
+			$Death.play()
+		restarting = true
+		if restart_timer <= 0:
+			get_tree().change_scene("res://Root.tscn")
 
 func _on_PickupRadius_area_entered(area):
 	if area.is_in_group("pickups"):
 		area.get_target(self)
-		print(area.position.distance_to(position))

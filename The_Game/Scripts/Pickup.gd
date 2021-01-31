@@ -12,9 +12,7 @@ func _physics_process(delta):
 		if pickup_speed < 110:
 			pickup_speed += pickup_acceleration * delta	
 		if position.distance_to(target.position) < 3:
-			# Placeholder to show that it works, when we work out what the pickups are, add effects here
-			print("Pickup acquired")
-			queue_free()
+			get_tree().change_scene("res://Objects/GodotCredits.tscn")
 		
 	
 func get_target(player):

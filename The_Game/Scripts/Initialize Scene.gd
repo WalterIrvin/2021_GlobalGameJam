@@ -1,8 +1,9 @@
 extends Node2D
 
 export (PackedScene) var Player
+var p = null
 
 func _ready():
-	var p = Player.instance()
+	p = Player.instance()
 	add_child(p)
 	p.position = $PlayerSpawner.global_position

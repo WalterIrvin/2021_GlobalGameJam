@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Stoulen Theme.ogg-5dbdc99cabe6eaedcdf8e605a6bc9cc1.oggstr"
+
+[deps]
+
+source_file="res://Music/Stoulen Theme.ogg"
+dest_files=[ "res://.import/Stoulen Theme.ogg-5dbdc99cabe6eaedcdf8e605a6bc9cc1.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
