@@ -1,12 +1,106 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Player Spawner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/lobby_area.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Root.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/DeathScreen.tscn" type="PackedScene" id=5]
 
 [node name="Root" type="Node2D"]
 position = Vector2( 455.766, 301.041 )
+script = ExtResource( 4 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DeathScreen" parent="CanvasLayer" instance=ExtResource( 5 )]
+visible = false
 
 [node name="lobby_area" parent="." instance=ExtResource( 2 )]
 
 [node name="Player Spawner" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1717.62, 1027.56 )
+position = Vector2( 3140.06, 1217.57 )
+
+[node name="Enemy" parent="." instance=ExtResource( 3 )]
+position = Vector2( 3386.28, 826.152 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 3391.83, 960.333 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 3432.57, 1245.35 )
+weapon_type = "chaingun"
+
+[node name="Enemy4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2067.98, 1588.62 )
+weapon_type = "chaingun"
+
+[node name="Enemy7" parent="." instance=ExtResource( 3 )]
+position = Vector2( 3123.21, 1838.65 )
+weapon_type = "shotgun"
+
+[node name="Enemy8" parent="." instance=ExtResource( 3 )]
+position = Vector2( 5054.85, 2373.02 )
+weapon_type = "shotgun"
+
+[node name="Enemy9" parent="." instance=ExtResource( 3 )]
+position = Vector2( 4573.48, 2339.75 )
+weapon_type = "shotgun"
+
+[node name="Enemy10" parent="." instance=ExtResource( 3 )]
+position = Vector2( 935.468, 1477.61 )
+weapon_type = "chaingun"
+
+[node name="Enemy11" parent="." instance=ExtResource( 3 )]
+position = Vector2( 935.468, 2403.07 )
+weapon_type = "chaingun"
+
+[node name="Enemy12" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1288.98, 4293.18 )
+weapon_type = "shotgun"
+
+[node name="Enemy13" parent="." instance=ExtResource( 3 )]
+position = Vector2( 5571.22, 4202.67 )
+weapon_type = "shotgun"
+
+[node name="Enemy14" parent="." instance=ExtResource( 3 )]
+position = Vector2( 5548.59, 4943.72 )
+weapon_type = "shotgun"
+
+[node name="Enemy15" parent="." instance=ExtResource( 3 )]
+position = Vector2( 457.424, 4926.75 )
+
+[node name="Enemy16" parent="." instance=ExtResource( 3 )]
+position = Vector2( 496.797, 5912.04 )
+
+[node name="Enemy17" parent="." instance=ExtResource( 3 )]
+position = Vector2( 760.797, 5440.04 )
+
+[node name="Enemy18" parent="." instance=ExtResource( 3 )]
+position = Vector2( 656.797, 5728.04 )
+
+[node name="Enemy19" parent="." instance=ExtResource( 3 )]
+position = Vector2( 664.797, 5128.04 )
+
+[node name="Enemy20" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1408.8, 5944.04 )
+weapon_type = "chaingun"
+
+[node name="Enemy21" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1497.24, 5600.04 )
+weapon_type = "chaingun"
+
+[node name="Enemy22" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1516.56, 5254.57 )
+weapon_type = "chaingun"
+
+[node name="Enemy23" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1485.14, 4937.78 )
+weapon_type = "chaingun"
+
+[node name="Enemy5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2305.3, 1631 )
+weapon_type = "shotgun"
+
+[node name="Enemy6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2106.12, 1732.7 )
+weapon_type = "shotgun"

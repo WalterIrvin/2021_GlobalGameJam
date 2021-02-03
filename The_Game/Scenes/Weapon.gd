@@ -25,6 +25,7 @@ export var weapon_dict = {}  # "name" : [fire-rate, damage, shells, spread]
 func _ready():
 	animator = get_child(0)
 	rng.randomize()
+	switch_weapon(self.cur_weapon)
 
 func switch_weapon(weapon):
 	"""The following function swaps weapons, locking the weapon from
@@ -74,6 +75,7 @@ func fire():
 			var weapon_pos = (weapon_dir * self.distance_to_parent) + owner.position
 			#weapon_pos = owner.position
 			new_bullet.position = weapon_pos
+			new_bullet.damage = self.damage
 			get_tree().root.get_child(0).add_child(new_bullet)
 		self.fired = true
 		

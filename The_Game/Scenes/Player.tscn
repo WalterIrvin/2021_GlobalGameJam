@@ -25,7 +25,9 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=4]
 radius = 43.6457
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=[
+"Players",
+]]
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -36,9 +38,9 @@ animation = "PlayerAnim"
 [node name="Weapon" parent="." instance=ExtResource( 3 )]
 position = Vector2( 73.0419, 30.5732 )
 weapon_dict = {
-"chaingun": [ 0.1, 0.5, 3.0, 10.0 ],
-"pistol": [ 0.75, 10.0, 1.0, 6.0 ],
-"shotgun": [ 1.5, 1.0, 13.0, 12.5 ]
+"chaingun": [ 0.1, 5.0, 3.0, 10.0 ],
+"pistol": [ 0.75, 25.0, 1.0, 6.0 ],
+"shotgun": [ 1.5, 10.0, 13.0, 12.5 ]
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -46,6 +48,6 @@ shape = SubResource( 4 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 2, 2 )
+zoom = Vector2( 1.5, 1.5 )
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
