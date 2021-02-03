@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Weapon.gd" type="Script" id=1]
 [ext_resource path="res://Assets/pistol.png" type="Texture" id=2]
 [ext_resource path="res://Assets/shotgun.png" type="Texture" id=3]
+[ext_resource path="res://Assets/chaingun.png" type="Texture" id=4]
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
@@ -24,6 +25,16 @@ flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 128, 0, 128, 128 )
 
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 128, 0, 128, 128 )
+
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ SubResource( 3 ), SubResource( 4 ) ],
@@ -35,6 +46,11 @@ animations = [ {
 "loop": true,
 "name": "shotgun",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "chaingun",
+"speed": 5.0
 } ]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -42,15 +58,16 @@ animations = [ {
 [node name="Weapon" type="Area2D"]
 script = ExtResource( 1 )
 weapon_dict = {
+"chaingun": [ 0.1, 0.5, 3.0, 10.0 ],
 "pistol": [ 0.75, 10.0, 1.0, 6.0 ],
 "shotgun": [ 1.5, 1.0, 13.0, 12.5 ]
 }
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
-position = Vector2( -4.62228, 0 )
+position = Vector2( -35, 0 )
 rotation = 1.5708
 frames = SubResource( 2 )
-animation = "shotgun"
+animation = "chaingun"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

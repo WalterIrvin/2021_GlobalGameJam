@@ -18,6 +18,8 @@ func process_input():
 		weapon.switch_weapon("pistol")
 	if Input.is_action_just_pressed("hotkey_2"):
 		weapon.switch_weapon("shotgun")
+	if Input.is_action_just_pressed("hotkey_3"):
+		weapon.switch_weapon("chaingun")
 
 	var vel_x = Vector2(0, 0)
 	var vel_y = Vector2(0, 0)

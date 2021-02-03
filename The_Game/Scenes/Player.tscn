@@ -34,8 +34,9 @@ frames = SubResource( 4 )
 animation = "PlayerAnim"
 
 [node name="Weapon" parent="." instance=ExtResource( 3 )]
-position = Vector2( 40.515, 30.0429 )
+position = Vector2( 73.0419, 30.5732 )
 weapon_dict = {
+"chaingun": [ 0.1, 0.5, 3.0, 10.0 ],
 "pistol": [ 0.75, 10.0, 1.0, 6.0 ],
 "shotgun": [ 1.5, 1.0, 13.0, 12.5 ]
 }
