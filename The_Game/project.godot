@@ -19,6 +19,10 @@ config/name="The_Game"
 run/main_scene="res://Scenes/Root.tscn"
 config/icon="res://icon.png"
 
+[editor_plugins]
+
+enabled=PoolStringArray( "vnen.tiled_importer" )
+
 [input]
 
 move_forward={
@@ -70,3 +74,7 @@ hotkey_3={
 [rendering]
 
 environment/default_environment="res://default_env.tres"
+
+[tiled_importer]
+
+enable_json_format=true

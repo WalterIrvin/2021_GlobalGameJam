@@ -19,3 +19,8 @@ func _process(delta):
 	if lifespan < 0:
 		queue_free()
 	self.position += self.forward_vec * self.speed
+
+
+func _on_Bullet_body_entered(body):
+	if body.name == "Walls":
+		queue_free()

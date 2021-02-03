@@ -25,11 +25,6 @@ export var weapon_dict = {}  # "name" : [fire-rate, damage, shells, spread]
 func _ready():
 	animator = get_child(0)
 	rng.randomize()
-	var local_delta = self.position - owner.position
-	print(self.position, owner.position)
-	var local_dir = local_delta.normalized()
-	self.local_angle_to_parent = atan2(local_dir.y, local_dir.x)
-	self.distance_to_parent = local_delta.length()
 
 func switch_weapon(weapon):
 	"""The following function swaps weapons, locking the weapon from
@@ -43,6 +38,11 @@ func switch_weapon(weapon):
 	self.spread = weapon_array[3]
 	self.fire_limiter = fire_rate
 	swap_anim(weapon)
+	
+	var local_delta = self.position
+	var local_dir = local_delta.normalized()
+	self.local_angle_to_parent = atan2(local_dir.y, local_dir.x)
+	self.distance_to_parent = local_delta.length()
 
 func swap_anim(weapon):
 	animator.play(weapon)
@@ -55,7 +55,7 @@ func fire():
 	else:
 		var forward = get_global_transform().x.normalized()
 		# For each shell, make a randomized offset from true forward
-		for i in range(self.shells):
+		for _i in range(self.shells):
 			var angle = rad2deg(atan2(forward.y, forward.x))
 			var deviance = rng.randf_range(-self.spread, self.spread)
 			# print("deviation:", deviance)
@@ -72,8 +72,9 @@ func fire():
 			var combined_angle = self.local_angle_to_parent + owner.rotation
 			var weapon_dir = Vector2(cos(combined_angle), sin(combined_angle))
 			var weapon_pos = (weapon_dir * self.distance_to_parent) + owner.position
+			#weapon_pos = owner.position
 			new_bullet.position = weapon_pos
-			owner.owner.add_child(new_bullet)
+			get_tree().root.get_child(0).add_child(new_bullet)
 		self.fired = true
 		
 	

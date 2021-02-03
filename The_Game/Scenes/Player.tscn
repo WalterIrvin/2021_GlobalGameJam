@@ -4,25 +4,25 @@
 [ext_resource path="res://Scenes/Player.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Weapon.tscn" type="PackedScene" id=3]
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=1]
 flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=2]
 flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 128, 0, 128, 128 )
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ SubResource( 2 ), SubResource( 3 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
 "loop": true,
 "name": "PlayerAnim",
 "speed": 5.0
 } ]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=4]
 radius = 43.6457
 
 [node name="Player" type="KinematicBody2D"]
@@ -30,7 +30,7 @@ script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 rotation = 1.5708
-frames = SubResource( 4 )
+frames = SubResource( 3 )
 animation = "PlayerAnim"
 
 [node name="Weapon" parent="." instance=ExtResource( 3 )]
@@ -42,5 +42,10 @@ weapon_dict = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource( 1 )
+shape = SubResource( 4 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 2, 2 )
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true

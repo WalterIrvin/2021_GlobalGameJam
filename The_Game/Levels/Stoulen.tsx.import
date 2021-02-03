@@ -1,0 +1,20 @@
+[remap]
+
+importer="vnen.tiled_tileset_importer"
+type="TileSet"
+path="res://.import/Stoulen.tsx-db12249fb2ef549ca39d068d1bcb29ab.res"
+
+[deps]
+
+source_file="res://Levels/Stoulen.tsx"
+dest_files=[ "res://.import/Stoulen.tsx-db12249fb2ef549ca39d068d1bcb29ab.res" ]
+
+[params]
+
+custom_properties=true
+tile_metadata=false
+image_flags=7
+embed_internal_images=false
+save_tiled_properties=false
+apply_offset=false
+post_import_script=""
