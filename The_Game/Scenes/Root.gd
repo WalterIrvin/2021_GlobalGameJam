@@ -14,6 +14,6 @@ func spawn_cam():
 
 func _process(_delta):
 	if self.death_screen == null:
-		self.death_screen = get_child(0).get_child(0)
+		self.death_screen = get_child(1).get_child(0)
 	if self.death_screen != null:
 		self.death_screen.visible = self.dead

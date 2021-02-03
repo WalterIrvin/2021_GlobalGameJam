@@ -2,23 +2,15 @@ extends Node2D
 
 onready var window_size = OS.get_window_size()
 var player_ref = null
-var old_player_grid_pos = null
-var first_check = true  # auto sets to player location
+var old_player_grid = null
+var desired_position = Vector2(0, 0)
+var follow_speed = 3
+var first_snap = true
 
-# Called when the node enters the scene tree for the first time.
+# The following script makes a LoZ-style camera
 func _ready():
 	pass
-
-func get_player():
-	var group = get_tree().get_nodes_in_group("Players")
-	var closest_dist = INF
-	var closest_player = null
-	for player in group:
-		var cur_dist = (player.position - self.position).length()
-		if cur_dist < closest_dist:
-			closest_player = player
-	self.player_ref = closest_player
-
+	
 func get_player_grid_pos():
 	if self.player_ref != null:
 		var pos = self.player_ref.global_position
@@ -26,27 +18,27 @@ func get_player_grid_pos():
 		var y = floor(pos.y / window_size.y)
 		return Vector2(x, y)
 	else:
-		return null
-
+		return null	
+		
 func update_camera():
 	self.window_size = OS.get_window_size()
-	var new_player_grid_pos = get_player_grid_pos()
-	var transform = Transform2D()
-	var old_transform = Transform2D()
+	var new_player_grid = get_player_grid_pos()
 	
-	if new_player_grid_pos != old_player_grid_pos or first_check:
-		old_player_grid_pos = new_player_grid_pos
-		old_transform = get_viewport().get_canvas_transform()
-		transform = get_viewport().get_canvas_transform()
-		transform[2] = -new_player_grid_pos * window_size
-		get_viewport().set_canvas_transform(transform)
-		first_check = false
-	return transform
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	if self.player_ref == null:
-		get_player()
-		old_player_grid_pos = get_player_grid_pos()
+	if new_player_grid != old_player_grid:
+		old_player_grid = new_player_grid
+		if first_snap:
+			self.position = self.window_size * new_player_grid
+			self.desired_position = self.position
+			self.first_snap = false
+		else:
+			self.desired_position = self.window_size * new_player_grid
+			var offset = self.desired_position - self.player_ref.global_position
+			print(offset)
+	
+func _process(delta):
+	if player_ref == null:
+		player_ref = get_tree().get_nodes_in_group("Players")[0]
 	else:
 		update_camera()
+		self.position = self.position.linear_interpolate(self.desired_position, follow_speed * delta)
+		# self.position = player_ref.global_position
